@@ -760,7 +760,7 @@ scenarios:
     assertThat(apiHost).isEqualTo('https://eu.i.posthog.com');
     assertApi('gtmOnSuccess').wasCalled();
 
-- name: Session recording off sets disable_session_recording
+- name: Session recording off disables recording
   code: |-
     const mockData = {
       tagType: 'init',
@@ -921,7 +921,7 @@ scenarios:
     assertThat(call.setOnce).isEqualTo({signup_date: '2026-01-01'});
     assertApi('gtmOnSuccess').wasCalled();
 
-- name: Reset calls posthog.reset
+- name: Reset calls the reset method
   code: |-
     const mockData = {tagType: 'reset'};
 
