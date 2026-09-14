@@ -1,7 +1,7 @@
 homepage: https://posthog.com
 documentation: https://posthog.com/docs/libraries/google-tag-manager
 versions:
-  - sha: "b5e12e2ceb9debd2e10d5f66b36be9b28ebda9b6"
+  - sha: "11f781301c16cb85ceac2c2c53ba7b744fd82fd1"
     changeNotes: |
       Initial release. Loads the PostHog JavaScript Web SDK and supports capture,
       identify, alias, reset, and opt in/out tags.
