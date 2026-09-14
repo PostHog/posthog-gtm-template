@@ -1,8 +1,10 @@
 # PostHog template for Google Tag Manager (web)
 
-A Google Tag Manager custom template that loads the [PostHog JavaScript Web SDK](https://posthog.com/docs/libraries/js) and sends events to PostHog, without writing a Custom HTML tag.
+A Google Tag Manager custom template that loads the [PostHog JavaScript Web SDK](https://posthog.com/docs/libraries/js) and sends events to PostHog. You do not need a Custom HTML tag.
 
-> **Status: not published.** This template has not been submitted to the Community Template Gallery and has not been tested in a real container. See [Before submitting](#before-submitting).
+## Install
+
+In your web container, go to **Templates > Tag Templates > Search Gallery** and search for PostHog.
 
 ## What it does
 
@@ -19,38 +21,32 @@ One template, several tag types:
 
 ## Setup
 
-1. Add the template to your container.
-2. Create an **Initialize PostHog** tag. Set your project API key and region, and fire it on **Initialization - All Pages**.
-3. Create your event tags. On each one, open **Advanced Settings > Tag Sequencing** and set the Initialize tag as the setup tag. The Initialize tag only reports success once the SDK has loaded and initialized, so sequencing guarantees the SDK is ready.
+1. Create an **Initialize PostHog** tag. Set your project API key and region, and fire it on **Initialization - All Pages**.
+2. Create your event tags. On each one, open **Advanced Settings > Tag Sequencing** and set the Initialize tag as the setup tag.
+
+The Initialize tag reports success only after the SDK loads and initializes. Tag sequencing therefore guarantees the SDK is ready before an event tag runs.
+
+Find your project API key in [your project settings](https://us.posthog.com/settings/project). It starts with `phc_` and is safe to expose in the browser.
 
 ## Reverse proxies and self-hosted instances
 
-The template can only inject a script from a URL declared in its permissions, and Google requires those URLs to be fixed. So it ships with the two PostHog Cloud asset hosts only.
+The template can only inject a script from a URL declared in its permissions, and Google requires those URLs to be fixed. The template therefore ships with the two PostHog Cloud asset hosts only.
 
 If you use a [reverse proxy](https://posthog.com/docs/advanced/proxy) or self-host:
 
-1. Load the SDK yourself with a Custom HTML tag containing the [PostHog snippet](https://posthog.com/docs/libraries/js).
+1. Load the SDK yourself with a Custom HTML tag that contains the [PostHog snippet](https://posthog.com/docs/libraries/js).
 2. In the Initialize tag, set **Region** to **Custom host** and enter your origin.
 
-Every other tag type works normally against any host.
+Every other tag type works against any host.
 
 ## Consent
 
-To hold events until a visitor consents, turn on **Start opted out of capturing** in the Initialize tag, then fire an **Opt in to capturing** tag from your consent banner.
+To hold events until a visitor consents, turn on **Start opted out of capturing** in the Initialize tag. Then fire an **Opt in to capturing** tag from your consent banner.
 
-## Before submitting
+## Contributing
 
-This repository is not ready for the [Community Template Gallery](https://developers.google.com/tag-platform/tag-manager/templates/gallery). Outstanding work:
-
-- [ ] Import `template.tpl` into the GTM template editor and confirm it loads without validation errors.
-- [x] Add a brand thumbnail to the `brand` block in `___INFO___`.
-- [x] Write test scenarios in `___TESTS___`. They have not been run yet, so confirm they pass in the template editor.
-- [ ] Test in a real container: SDK loading, tag sequencing, each tag type, and a consent flow.
-- [x] Pin `metadata.yaml` to the commit SHA of the `template.tpl` to publish. Update it whenever `template.tpl` changes.
-- [ ] Accept the gallery Developer Terms of Service in the template editor's **Info** tab.
-- [x] Make this repository public with Issues enabled.
-- [ ] Submit at [tagmanager.google.com/gallery](https://tagmanager.google.com/gallery).
+Open an issue or a pull request. If you change `template.tpl`, add a new entry at the top of the `versions` list in `metadata.yaml` with the new commit SHA and a change note. The gallery serves the revision that `metadata.yaml` names.
 
 ## License
 
-Apache 2.0. Required by Google for gallery templates, and not the license PostHog uses elsewhere.
+Apache 2.0, as required for Google Tag Manager gallery templates.
