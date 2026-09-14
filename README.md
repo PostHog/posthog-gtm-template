@@ -43,12 +43,13 @@ To hold events until a visitor consents, turn on **Start opted out of capturing*
 This repository is not ready for the [Community Template Gallery](https://developers.google.com/tag-platform/tag-manager/templates/gallery). Outstanding work:
 
 - [ ] Import `template.tpl` into the GTM template editor and confirm it loads without validation errors.
-- [ ] Add a brand thumbnail to the `brand` block in `___INFO___`. The gallery shows it next to the template name.
-- [ ] Write test scenarios in `___TESTS___`, which is currently empty.
+- [x] Add a brand thumbnail to the `brand` block in `___INFO___`.
+- [x] Write test scenarios in `___TESTS___`. They have not been run yet, so confirm they pass in the template editor.
 - [ ] Test in a real container: SDK loading, tag sequencing, each tag type, and a consent flow.
 - [x] Pin `metadata.yaml` to the commit SHA of the `template.tpl` to publish. Update it whenever `template.tpl` changes.
 - [ ] Accept the gallery Developer Terms of Service in the template editor's **Info** tab.
-- [ ] Make this repository public with Issues enabled, then submit at [tagmanager.google.com/gallery](https://tagmanager.google.com/gallery).
+- [x] Make this repository public with Issues enabled.
+- [ ] Submit at [tagmanager.google.com/gallery](https://tagmanager.google.com/gallery).
 
 ## License
 
